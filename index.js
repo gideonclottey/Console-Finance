@@ -101,4 +101,18 @@ for (i = 0; i < finances.length; i++) {
   total = total + finances[i][1];
 }
 
-console.log(total)
+console.log(total);
+
+// The average of the changes in Profit/Losses over the entire period.
+var changes = [];
+
+for (i = 1; i < finances.length; i++) {
+  changes.push(finances[i][1] - finances[i - 1][1]);
+}
+
+// using the reduce funtion we can sum up all the items in the changes list
+
+console.log(changes);
+var sum = changes.reduce((currentvalue, item) => currentvalue + item, 0);
+var average = sum / changes.length;
+console.log("Average changes in profit and loss", average);
