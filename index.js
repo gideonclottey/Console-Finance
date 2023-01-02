@@ -91,7 +91,7 @@ var finances = [
 
 total_number_month = finances.length;
 
-console.log("Total Months: ",total_number_month);
+console.log("Total Months: ", total_number_month);
 
 // The net total amount of Profit/Losses over the entire period.
 
@@ -101,7 +101,7 @@ for (i = 0; i < finances.length; i++) {
   total = total + finances[i][1];
 }
 
-console.log( "Total: ",total);
+console.log("Total: ", total);
 
 // The average of the changes in Profit/Losses over the entire period.
 var changes = [];
@@ -118,23 +118,17 @@ var average = sum / changes.length;
 console.log("Average changes in profit and loss", average);
 
 //  The greatest increase in profits (date and amount) over the entire period.
+var changes_date_amount = [];
 
-var greatest_increase = [];
-for (let i = 1; i < changes.length; i++) {
-  greatest_increase.push(finances[i][0], finances[i][1] - finances[i - 1][1]);
+for (i = 1; i < finances.length; i++) {
+  changes_date_amount.push([
+    finances[i][0],
+    finances[i][1] - finances[i - 1][1],
+  ]);
 }
-
-var new_great = greatest_increase.reduce((c, i) => {
-  c: i;
-}, {}); 
-console.log(new_great);
-
-// // const array = [3, 6, 2, 56, 32, 5, 89, 32];
-// let largestNum = [0];
-
-// for (let i = 1; i < greatest_increase.length; i++) {
-//   if (greatest_increase[i][1] > largestNum) {
-//     largestNum.push(greatest_increase[i][1]);
-//   }
-// }
-// console.log("Largest Number", largestNum);             
+for (let i = 1; i < changes_date_amount.length; i++) {
+  let highest = "";
+  if (changes_date_amount[i][1] > highest[1])
+    highest.push(changes_date_amount[i][0], changes_date_amount[i][1]);
+}
+console.log(highest);
